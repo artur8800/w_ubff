@@ -5,6 +5,9 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const config = require('./config.js')
 const webpack = require('webpack');
 const AssetsPlugin = require("assets-webpack-plugin");
+const {
+  CleanWebpackPlugin
+} = require("clean-webpack-plugin");
 
 module.exports = (env) => {
 
@@ -21,9 +24,9 @@ module.exports = (env) => {
       gallery: "./assets/src/js/gallery.js",
     },
     output: {
-      filename: "[name].js",
+      filename: "js/[name].js",
       chunkFilename: "[name]/[name].js",
-      path: path.resolve(__dirname, "../assets/dist")
+      path: path.resolve(__dirname, "../assets/dist/")
     },
     optimization: {
       splitChunks: {
@@ -31,7 +34,7 @@ module.exports = (env) => {
         cacheGroups: {
           common: {
             name: "common",
-            filename: "script/[name]/[name].[chunkhash:8].js",
+            filename: "js/[name].[chunkhash:8].js",
             test: /[\\/]node_modules[\\/]/,
             chunks: "all",
             //  minSize: 0
@@ -40,6 +43,9 @@ module.exports = (env) => {
       }
     },
     plugins: [
+      new CleanWebpackPlugin({
+        cleanStaleWebpackAssets: false
+      }),
       new BrowserSyncPlugin({
         files: '**/*',
         host: '127.0.0.1',
@@ -56,8 +62,8 @@ module.exports = (env) => {
         filename: "css/[name].[contenthash:8].css"
       }),
       new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery'
+        $: "jquery",
+        jQuery: "jquery"
       }),
       new AssetsPlugin({
         removeFullPathAutoPrefix: true,
@@ -68,9 +74,7 @@ module.exports = (env) => {
         filename: "assets.json"
       })
     ],
-    externals: {
-      jquery: 'jQuery'
-    },
+
     module: {
       rules: [
         // JAVASCRIPT
@@ -111,8 +115,8 @@ module.exports = (env) => {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              outputPath: "fonts",
-
+              outputPath: "./fonts",
+              publicPath: "../fonts"
             }
           }]
         },

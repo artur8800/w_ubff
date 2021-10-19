@@ -1,4 +1,3 @@
-console.log('gggg')
 import $ from "jquery";
 // import Swiper JS
 import Swipable from "./swipeble";
