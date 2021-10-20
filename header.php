@@ -31,15 +31,15 @@
                    <?php the_custom_logo(); ?>
                 </div>
 
-                <nav class="header__navigation right-block">
+                <nav id="main__navigation" class="header__navigation right-block">
                   
 							<?php
 								wp_nav_menu(
 									array(
 										'theme_location' => 'menu-1',
-										'menu_id'        => 'primary-menu desktop__menu',
+										'menu_id'        => 'primary-menu',
                                         'container' => false,
-                                        'menu_class' => 'header__navigation__list'
+                                        'menu_class' => 'mobile__navigation__list' //header__navigation__list
 									)
 								);
 						?>
@@ -52,17 +52,7 @@
                 <nav class="mobile__navigation">
                     <ul class="navigation__list">
                         <li class="mobile__navigation__item"><a class="navigation__link" href="news.html">Новини</a>
-                        </li>
-                        <li class="mobile__navigation__item"><a class="navigation__link" href="">Про Федерацію</a></li>
-                        <li class="mobile__navigation__item"><a class="navigation__link" href="about.html">Про ВМХ</a>
-                        </li>
-                        <li class="mobile__navigation__item"><a class="navigation__link" href="team.html">Команда</a>
-                        </li>
-                        <li class="mobile__navigation__item"><a class="navigation__link" href="gallery.html">Галерея</a>
-                        </li>
-                        <li class="mobile__navigation__item"><a class="navigation__link" href="">Документація</a></li>
-                        <li class="mobile__navigation__item"><a class="navigation__link" href="">Контакти</a></li>
-                        <li class="mobile__navigation__item"><a class="navigation__link" href="">Долучитися</a></li>
+                     
                     </ul>
                 </nav>
             </div> -->

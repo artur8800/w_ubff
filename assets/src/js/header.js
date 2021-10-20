@@ -2,8 +2,8 @@ module.exports = function() {
 
   let button = '.burger__menu';
   let activeClass = 'menu-active';
-  let mobileMenu = '.mobile__menu';
-  let mainNavigation = '.header__navigation';
+  let mainNavigation = $('#main__navigation');
+
 
   $(button)
     .click(function(event) {
@@ -11,8 +11,16 @@ module.exports = function() {
         .toggleClass(activeClass);
       $('body')
         .toggleClass("overflow-hidden");
-      $('.mobile__menu')
-        .toggleClass('menu-open')
+
+      if (!mainNavigation.hasClass("mobile__navigation")) {
+        mainNavigation.addClass("mobile__navigation").slideDown('slow');
+      } else {
+        mainNavigation.removeClass("mobile__navigation")
+      }
+
+
+      // if (mainNavigation.hasClass("mobile__navigation")) 
+      //   mainNavigation.removeClass('mobile__navigation').slideUp('fast');
 
       // let listElements = $('.header__navigation__list');
       // //   ;
@@ -36,6 +44,7 @@ module.exports = function() {
     })
 
   // $(".burger__menu")
+
   //   .click(function(event) {
   //     event.preventDefault();
   //     console.log('click')
