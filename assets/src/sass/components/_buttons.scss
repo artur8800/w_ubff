@@ -12,7 +12,7 @@
     -o-border-radius: 6px;
 }
 
-.button-blue {
+.button-blue-navigation {
     background-color: $blue1;
     border: 2px solid $blue1;
     color: #fff;
@@ -28,16 +28,7 @@
     }
 }
 
-.navigation__button {
-    box-sizing: border-box;
-    font-weight: bold;
-    display: block;
-    height: 72px;
-    line-height: 68px;
-    padding-left: 16px;
-    padding-right: 16px;
-    text-transform: uppercase;
-}
+
 
 .svg__button {
     background: rgba(255, 255, 255, 0.1);

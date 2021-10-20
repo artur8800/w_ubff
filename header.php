@@ -31,7 +31,7 @@
                    <?php the_custom_logo(); ?>
                 </div>
 
-                <nav id="main__navigation" class="header__navigation right-block">
+                <nav id="main__navigation" class="header__navigation  right-block">
                   
 							<?php
 								wp_nav_menu(
@@ -39,7 +39,7 @@
 										'theme_location' => 'menu-1',
 										'menu_id'        => 'primary-menu',
                                         'container' => false,
-                                        'menu_class' => 'mobile__navigation__list' //header__navigation__list
+                                        'menu_class' => 'header__navigation__list' //header__navigation__list
 									)
 								);
 						?>
