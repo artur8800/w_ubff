@@ -24,7 +24,6 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 
-
 	<header class="header">
             <div class="main__header">
                 <div class="header__logo left-block">

@@ -18,7 +18,6 @@ module.exports = function () {
 
 
   $(window).on('resize', function (event) {
-
     if (!$button.hasClass(activeClass) && $mainNavigation.attr('style')) {
       $mainNavigation.removeAttr('style')
     }

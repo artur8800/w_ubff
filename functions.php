@@ -7,6 +7,19 @@
  * @package wp-ubff
  */
 
+
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
+use Carbon_Fields\Block;
+
+
+add_action( 'after_setup_theme', 'crb_load' );
+function crb_load() {
+    require_once( 'vendor/autoload.php' );
+    \Carbon_Fields\Carbon_Fields::boot();
+}
+
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
@@ -205,6 +218,36 @@ function change_logo_class( $html ) {
 }
 
 add_filter( 'get_custom_logo', 'change_logo_class' );
+
+
+add_action('acf/init', 'my_acf_init_block_types');
+function my_acf_init_block_types() {
+
+    // Check function exists.
+    if( function_exists('acf_register_block_type') ) {
+
+        // register a testimonial block.
+        acf_register_block_type(array(
+            'name'              => 'testimonial',
+            'title'             => __('Testimonial'),
+            'description'       => __('A custom testimonial block.'),
+            'render_template'   => 'template-parts/testimonial.php',
+            'category'          => 'formatting',
+            'icon'              => 'admin-comments',
+            'keywords'          => array( 'testimonial', 'quote' ),
+        ));
+    }
+}
+
+
+
+
+
+require get_template_directory() . '/template-parts/carbon-fields/banner-image-section.php';
+
+require get_template_directory() . '/template-parts/carbon-fields/latest-posts.php';
+
+
 
 require get_template_directory() . '/inc/custom-header.php';
 
