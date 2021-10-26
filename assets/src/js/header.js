@@ -8,12 +8,13 @@ module.exports = function () {
   $button.on('click', function (event) {
     $(this)
       .toggleClass(activeClass);
-    $('body')
-      .toggleClass("overflow-hidden");
 
     $mainNavigation.animate({
-      height: 'toggle'
-    });
+      height: ['toggle', 'swing']
+    }, 225, "easein");
+
+    // $('body')
+    //   .toggleClass("overflow-hidden");
   });
 
 

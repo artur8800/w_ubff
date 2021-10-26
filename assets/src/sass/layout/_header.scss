@@ -158,8 +158,8 @@ body {
 }
 
 @media #{$medium-and-down} {
+    
     .header__navigation {
-       
             display: none;
             position: absolute;
             top: 72px;
@@ -169,12 +169,14 @@ body {
             width: 100%;
             height: 100vh;
             background: #fff;
-            transition: height cubic-bezier(0.4, 0, 1, 1);
-            -webkit-transition: height cubic-bezier(0.4, 0, 1, 1);
-            -moz-transition: height cubic-bezier(0.4, 0, 1, 1);
-            -ms-transition: height cubic-bezier(0.4, 0, 1, 1);
-            -o-transition: height cubic-bezier(0.4, 0, 1, 1);
-            #primary-menu {
+            transition: height cubic-bezier(0.3, 0, 1, 1);
+            -webkit-transition: height cubic-bezier(0.3, 0, 1, 1);
+            -moz-transition: height cubic-bezier(0.3, 0, 1, 1);
+            -ms-transition: height cubic-bezier(0.3, 0, 1, 1);
+            -o-transition: height cubic-bezier(0.3, 0, 1, 1);
+            z-index: 999;
+            #primary-menu{
+
                 display: flex;
             }
 
