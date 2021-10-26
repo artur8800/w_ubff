@@ -96,6 +96,10 @@ if ( ! function_exists( 'wp_ubff_setup' ) ) :
 			)
 		);
 
+
+		  
+		 add_action( 'after_setup_theme', 'wpse_setup_theme' );
+
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
@@ -124,10 +128,10 @@ add_action( 'after_setup_theme', 'wp_ubff_setup' );
  *
  * @global int $content_width
  */
-function wp_ubff_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'wp_ubff_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'wp_ubff_content_width', 0 );
+// function wp_ubff_content_width() {
+// 	$GLOBALS['content_width'] = apply_filters( 'wp_ubff_content_width', 1200 );
+// }
+// add_action( 'after_setup_theme', 'wp_ubff_content_width', 0 );
 
 /**
  * Register widget area.
@@ -148,6 +152,8 @@ function wp_ubff_widgets_init() {
 	);
 }
 add_action( 'widgets_init', 'wp_ubff_widgets_init' );
+
+
 
 /**
  * Enqueue scripts and styles.
@@ -200,48 +206,10 @@ function smartwp_remove_wp_block_library_css(){
 add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 
 
-function add_menuclass($ulclass) {
-	return preg_replace('/<a /', '<a class="header__navigation__links"', $ulclass);
- }
-add_filter('wp_nav_menu','add_menuclass');
 
 
 
-
-
-function change_logo_class( $html ) {
-
-  
-    $html = str_replace( 'custom-logo-link', 'header__logo__img', $html );
-
-    return $html;
-}
-
-add_filter( 'get_custom_logo', 'change_logo_class' );
-
-
-add_action('acf/init', 'my_acf_init_block_types');
-function my_acf_init_block_types() {
-
-    // Check function exists.
-    if( function_exists('acf_register_block_type') ) {
-
-        // register a testimonial block.
-        acf_register_block_type(array(
-            'name'              => 'testimonial',
-            'title'             => __('Testimonial'),
-            'description'       => __('A custom testimonial block.'),
-            'render_template'   => 'template-parts/testimonial.php',
-            'category'          => 'formatting',
-            'icon'              => 'admin-comments',
-            'keywords'          => array( 'testimonial', 'quote' ),
-        ));
-    }
-}
-
-
-
-
+require get_template_directory() . '/template-parts/template-functions/template-functions.php';
 
 require get_template_directory() . '/template-parts/carbon-fields/banner-image-section.php';
 
@@ -272,4 +240,3 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-

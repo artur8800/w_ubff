@@ -34,7 +34,12 @@
 
 .header__navigation__item:last-child a {
     font-weight: bold;
+    color: #fff;
 }
+.header__navigation__item:last-child:hover a {
+    color: $blue1;
+}
+
 
 .header__logo__img {
     display: inline-block;
@@ -187,9 +192,6 @@ body {
                 .header__navigation__links {
                     font-weight: bold;
                     text-transform: uppercase;
-                    &:visited {
-                        color: unset;
-                    }
                 }
 
             }

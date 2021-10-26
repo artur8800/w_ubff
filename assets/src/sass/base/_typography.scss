@@ -8,6 +8,9 @@ a {
     font-size: 1em;
     font-family: $osans;
     font-weight: 400;
+    &:visited {
+        color: unset;
+    }
 }
 
 b {

@@ -24,10 +24,24 @@
         color: #fff;
     }
     &:visited:hover {
-        color: $blue1;
+        color: inherit;
     }
+    
 }
 
+.button-blue {
+
+    background-color: $blue1;
+    color: #fff;
+    &:visited {
+        color: #fff;
+    }
+    &:hover {
+        border: 2px solid $blue1;
+        color: $blue1;
+        background-color: #fff;
+    }
+}
 
 
 .svg__button {
