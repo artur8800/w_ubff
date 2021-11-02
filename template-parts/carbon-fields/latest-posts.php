@@ -23,8 +23,9 @@ add_action('carbon_fields_register_fields', 'crb_add_latest_block');
         ->add_fields(array(
             Field::make('text', 'crb_recent_post_title', __('Heading text'))
             ->set_default_value( __('Heading text') ),
-            Field::make('select', 'crb_recent_post_count', __('Choose Post count'))
-            ->set_options($menu_list)
+            Field::make('select', 'crb_recent_post_button', __('Select a section for a link'))
+            ->set_options($menu_list),
+            Field::make( 'text', 'crb_recen_post_button_value' )
         ))
     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
         ?>
@@ -50,7 +51,7 @@ add_action('carbon_fields_register_fields', 'crb_add_latest_block');
                         $result = wp_get_recent_posts($args);
 
 
-                        $post_count = $fields['crb_recent_post_count'];
+                        $post_count = $fields['crb_recent_post_button'];
                         $link = get_home_url();
 
                         if( $menu_items = wp_get_nav_menu_items('menu-1') ) { 
@@ -85,16 +86,21 @@ add_action('carbon_fields_register_fields', 'crb_add_latest_block');
                     </div>
                 </div>
                 <?php 
-                            } ?>
+                } ?>
 
             </div>
 
+
         </div>
-        <a href="<?php echo esc_url($link) ?>">BUTTON</a>
+        <?php if (!empty($fields['crb_recen_post_button_value'])) {
+
+             echo '<div class="button__wrapper"><a class="button__rounded button-blue" href="' . esc_url($link) . '">' . esc_html($fields['crb_recen_post_button_value']) . '</a>'; 
+        }?>
+
     </div>
 </section>
 
 
 <?php
     });
-    }
+}
