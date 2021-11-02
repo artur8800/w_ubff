@@ -60,6 +60,13 @@ if ( ! function_exists( 'wp_ubff_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
+		add_image_size( 'gallery-square', 160, 160, true );
+
+		add_image_size( 'gallery-horizontal', 260, 160, true );
+
+		add_image_size( 'gallery-vertical', 260, 360, true );
+
+
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
@@ -119,6 +126,18 @@ if ( ! function_exists( 'wp_ubff_setup' ) ) :
 		);
 	}
 endif;
+
+add_filter( 'image_size_names_choose', 'my_custom_sizes' );
+ 
+function my_custom_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        'gallery-square' => __( 'Square' ),
+		'gallery-horizontal' => __( 'Horizontal' ),
+		'gallery-vertical' => __( 'Vertical' ),
+    ) );
+}
+
+
 add_action( 'after_setup_theme', 'wp_ubff_setup' );
 
 /**
@@ -215,7 +234,7 @@ require get_template_directory() . '/template-parts/carbon-fields/banner-image-s
 
 require get_template_directory() . '/template-parts/carbon-fields/latest-posts.php';
 
-
+require get_template_directory() . '/template-parts/carbon-fields/main-page-gallery.php';
 
 require get_template_directory() . '/inc/custom-header.php';
 
