@@ -8,6 +8,13 @@ body {
     overflow: auto;
 }
 
+html,
+body, 
+#page,
+#primary {
+    height: 100%;
+}
+
 
 ::-webkit-scrollbar {
     width: 2px;

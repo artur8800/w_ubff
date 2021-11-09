@@ -23,8 +23,8 @@ get_header();
     <?php
 		while ( have_posts() ) :
 			the_post();
-
-			get_template_part( 'template-parts/content', 'main' );
+            echo "YOU on the about page";
+			get_template_part( 'template-parts/content', 'about' );
 
 		endwhile; // End of the loop.
 		?>
