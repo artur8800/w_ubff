@@ -81,3 +81,9 @@ b {
 .post__blockquote {
     @extend .post-title;
 }
+.copyrights-text {
+    line-height: 1.35;
+    font-size: 1em;
+    font-family: $osans;
+    font-weight: 400;
+}

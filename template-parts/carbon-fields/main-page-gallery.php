@@ -18,7 +18,7 @@ add_action('carbon_fields_register_fields', 'crb_add_gallery');
             }          
         }
 
-Block::make( __( 'My Shiny Gutenberg Block' ) )
+Block::make( __( 'My shiny gutenberg block' ) )
 	->add_fields( array(
         Field::make( 'complex', 'crb_media_item' )
             ->set_layout('tabbed-horizontal')
@@ -169,7 +169,6 @@ Block::make( __( 'My Shiny Gutenberg Block' ) )
 </section>
 
 
-</div><!-- /.block -->
 
 <?php
 	});

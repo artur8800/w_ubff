@@ -16,6 +16,9 @@
 }
 
 @media #{$medium-and-down} {
+    .hide-on-small {
+        display: none;
+    }
     .container {
         padding-left: 16px;
         padding-right: 16px;

@@ -13,19 +13,27 @@
     margin-bottom: 12px;
 }
 
+.copyrights-text {
+    padding-bottom: 6px;
+}
+
 .footer__heading,
 .footer__logo {
     margin-bottom: 24px;
 }
 
+.icons__list {
+    margin-top: 36px;
+}
+
 .icons__list__item {
     float: left;
+    margin-right: 16px;
 }
 
 .mobile__footer {
     .icon__list {
         display: inline-block;
-        float: right;
     }
     .icon__list__item {
         float: left;

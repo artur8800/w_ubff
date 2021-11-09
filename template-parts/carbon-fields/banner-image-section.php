@@ -17,17 +17,18 @@ use Carbon_Fields\Field;
 	) )
 	->set_render_callback( function ( $fields, $attributes, $inner_blocks ) {
 		?>
-          <section class="banner__section">
-            <div class="container">
+<section class="banner__section">
+    <div class="container">
 
-                <div class="banner__wrapper">
-                    <div class="banner__image">
-                     <?php echo wp_get_attachment_image( $fields['image'], 'full') ?>
-                        
-                    </div>
-                    <div class="banner__info">
-                        <h1 class="banner__title text-blue"><?php echo apply_filters( 'the_content', $fields['heading'] ); ?></h1>
-                        <?php  
+        <div class="banner__wrapper">
+            <div class="banner__image">
+                <?php echo wp_get_attachment_image( $fields['image'], 'banner-size') ?>
+
+            </div>
+            <div class="banner__info">
+                <h1 class="banner__title text-blue"><?php echo apply_filters( 'the_content', $fields['heading'] ); ?>
+                </h1>
+                <?php  
                             $buton_field = $fields['button_url'];
                            
                             if (isset($buton_field)) {
@@ -36,19 +37,19 @@ use Carbon_Fields\Field;
                                 $link = get_home_url();
                             }
                         ?>
-                        
-                        <a href="<?php echo $link ?>" class="button__rounded button-blue">Про
-                            федерацію</a>
-                       
-                       
-                    </div>
-                </div>
+
+                <a href="<?php echo $link ?>" class="button__rounded button-blue">Про
+                    федерацію</a>
+
 
             </div>
+        </div>
 
-        </section>
+    </div>
+
+</section>
 
 
-		<?php
+<?php
 	} );
     }
