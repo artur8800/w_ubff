@@ -9,10 +9,19 @@ body {
 }
 
 html,
-body, 
-#page,
-#primary {
+body {
     height: 100%;
+}
+
+#page,
+#primary  {
+    min-height: 100%;
+}
+
+#page {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
 }
 
 

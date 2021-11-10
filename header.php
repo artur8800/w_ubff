@@ -12,27 +12,28 @@
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-<head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-	<?php wp_head(); ?>
+<head>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+
+    <?php wp_head(); ?>
 </head>
 
 <body <?php body_class('page__body'); ?>>
-<?php wp_body_open(); ?>
-<div id="page" class="site">
+    <?php wp_body_open(); ?>
+    <div id="page" class="site">
 
-	<header class="header">
+        <header class="header">
             <div class="main__header">
                 <div class="header__logo left-block">
-                   <?php the_custom_logo(); ?>
+                    <?php the_custom_logo(); ?>
                 </div>
 
                 <nav id="main__navigation" class="header__navigation  right-block">
-                  
-							<?php
+
+                    <?php
 								wp_nav_menu(
 									array(
 										'theme_location' => 'menu-1',
@@ -42,23 +43,13 @@
 									)
 								);
 						?>
-                       
+
                     </ul>
                 </nav>
             </div>
 
-            <!-- <div class="mobile__menu">
-                <nav class="mobile__navigation">
-                    <ul class="navigation__list">
-                        <li class="mobile__navigation__item"><a class="navigation__link" href="news.html">Новини</a>
-                     
-                    </ul>
-                </nav>
-            </div> -->
             <div class="burger__menu">
                 <div class="burger"></div>
             </div>
 
         </header>
-
-
