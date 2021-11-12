@@ -1,50 +1,52 @@
+
 const path = require('path');
+const defaultConfig = require('@wordpress/scripts/config/webpack.config');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-const config = require('./config.js')
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const config = require('./config.js');
 const webpack = require('webpack');
-const AssetsPlugin = require("assets-webpack-plugin");
+const AssetsPlugin = require('assets-webpack-plugin');
 const {
-  CleanWebpackPlugin
-} = require("clean-webpack-plugin");
+  CleanWebpackPlugin,
+} = require('clean-webpack-plugin');
 
 module.exports = (env) => {
-
   return {
     entry: {
 
-      index: "./assets/src/js/index.js",
-      news: "./assets/src/js/news.js",
-      print: "./assets/src/js/print.js",
-      about: "./assets/src/js/about.js",
-      team: "./assets/src/js/team.js",
-      news_item: "./assets/src/js/news_item.js",
-      team_member: "./assets/src/js/team_member.js",
-      gallery: "./assets/src/js/gallery.js",
+      index: './assets/src/js/index.js',
+      news: './assets/src/js/news.js',
+      print: './assets/src/js/print.js',
+      about: './assets/src/js/about.js',
+      team: './assets/src/js/team.js',
+      news_item: './assets/src/js/news_item.js',
+      team_member: './assets/src/js/team_member.js',
+      gallery: './assets/src/js/gallery.js',
+      myfirstblock: './assets/src/js/blocks/awp-myfirstblock.js',
     },
     output: {
-      filename: "js/[name].js",
-      chunkFilename: "[name]/[name].js",
-      path: path.resolve(__dirname, "../assets/dist/")
+      filename: 'js/[name].js',
+      chunkFilename: '[name]/[name].js',
+      path: path.resolve(__dirname, '../assets/dist/'),
     },
     optimization: {
       splitChunks: {
 
         cacheGroups: {
           common: {
-            name: "common",
-            filename: "js/[name].[chunkhash:8].js",
+            name: 'common',
+            filename: 'js/[name].[chunkhash:8].js',
             test: /[\\/]node_modules[\\/]/,
-            chunks: "all",
+            chunks: 'all',
             //  minSize: 0
-          }
-        }
-      }
+          },
+        },
+      },
     },
     plugins: [
       new CleanWebpackPlugin({
-        cleanStaleWebpackAssets: false
+        cleanStaleWebpackAssets: false,
       }),
       new BrowserSyncPlugin({
         files: '**/*',
@@ -53,26 +55,26 @@ module.exports = (env) => {
         notify: false,
         open: 'external',
         port: 80,
-        proxy: config.datas.localPath
+        proxy: config.datas.localPath,
       }),
       new UglifyJSPlugin({
-        sourceMap: env.sourcemaps ? true : false
+        sourceMap: env.sourcemaps ? true : false,
       }),
       new MiniCSSExtractPlugin({
-        filename: "css/[name].[contenthash:8].css"
+        filename: 'css/[name].[contenthash:8].css',
       }),
       new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery"
+        $: 'jquery',
+        jQuery: 'jquery',
       }),
       new AssetsPlugin({
         removeFullPathAutoPrefix: true,
         entrypoints: true,
         includeFilesWithoutChunk: false,
         prettyPrint: true,
-        path: path.join(__dirname, "../assets/dist/paths"),
-        filename: "assets.json"
-      })
+        path: path.join(__dirname, '../assets/dist/paths'),
+        filename: 'assets.json',
+      }),
     ],
 
     module: {
@@ -84,9 +86,9 @@ module.exports = (env) => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
-            }
-          }
+              presets: ['@babel/preset-env'],
+            },
+          },
         },
         // SASS
         {
@@ -94,55 +96,55 @@ module.exports = (env) => {
 
           use: [
             // fallback to style-loader in development
-            process.env.NODE_ENV !== "production" ?
-            "style-loader" :
-            MiniCSSExtractPlugin.loader,
+            process.env.NODE_ENV !== 'production'
+              ? 'style-loader'
+              : MiniCSSExtractPlugin.loader,
             {
               loader: MiniCSSExtractPlugin.loader,
               options: {
-                esModule: false
-              }
+                esModule: false,
+              },
             },
 
-            "css-loader",
-            "postcss-loader",
-            "sass-loader"
-          ]
+            'css-loader',
+            'postcss-loader',
+            'sass-loader',
+          ],
         },
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/i,
           use: [{
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              name: "[name].[ext]",
-              outputPath: "./fonts",
-              publicPath: "../fonts"
-            }
-          }]
+              name: '[name].[ext]',
+              outputPath: './fonts',
+              publicPath: '../fonts',
+            },
+          }],
         },
         {
           test: /\.(svg|png)$/,
-          type: "asset/inline"
+          type: 'asset/inline',
         },
         {
           test: /\.gif$/i,
-          loader: "file-loader",
+          loader: 'file-loader',
           options: {
-            name: "[name].[contenthash].[ext]",
-            outputPath: "img"
-          }
+            name: '[name].[contenthash].[ext]',
+            outputPath: 'img',
+          },
         },
         {
           test: /\.jpg$/,
-          type: "asset/resource",
+          type: 'asset/resource',
           generator: {
-            filename: "img/[name][ext]"
-          }
+            filename: 'img/[name][ext]',
+          },
         },
-      ]
+      ],
     },
 
     mode: 'development',
-    devtool: env.sourcemaps ? 'source-map' : false
+    devtool: env.sourcemaps ? 'source-map' : false,
   };
 };

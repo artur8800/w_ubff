@@ -230,7 +230,31 @@ function smartwp_remove_wp_block_library_css(){
 add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 
 
+// function gutenberg_examples_01_register_block() {
+ 
+//     // automatically load dependencies and version
+// 	var_dump(plugin_dir_path( __FILE__ ));
+//     $asset_file = include( plugin_dir_path( __FILE__ ) . 'custom/awp-myfirstblock.asset.php');
+ 
+//     wp_register_script(
+//         'gutenberg-examples-01-esnext',
+//         plugins_url( 'custom/myfirstblock.js', __FILE__ ),
+//         $asset_file['dependencies'],
+//         $asset_file['version']
+//     );
+ 
+ 
+// }
+// add_action( 'init', 'gutenberg_examples_01_register_block' );
 
+
+add_action('init', function() {
+	wp_register_script('awp-myfirstblock-js', get_template_directory_uri() . '/custom/awp-myfirstblock.js');
+ 
+	register_block_type('awp/firstblock', [
+		'editor_script' => 'awp-myfirstblock-js',
+	]);
+});
 
 
 require get_template_directory() . '/template-parts/template-functions/template-functions.php';
@@ -242,6 +266,8 @@ require get_template_directory() . '/template-parts/carbon-fields/latest-posts.p
 require get_template_directory() . '/template-parts/carbon-fields/main-page-gallery.php';
 
 require get_template_directory() . '/template-parts/carbon-fields/partners.php';
+
+require get_template_directory() . '/template-parts/carbon-fields/inner-block.php';
 
 require get_template_directory() . '/inc/custom-header.php';
 
