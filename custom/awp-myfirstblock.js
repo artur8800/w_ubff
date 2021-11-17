@@ -1,1 +1,0 @@
-(0,wp.blocks.registerBlockType)("awp/myfirstblock",{title:"My first block",category:"common",icon:"smiley",description:"Learning in progress",keywords:["example","test"],edit:function(){return React.createElement("div",null,":)")},save:function(){return React.createElement("div",null,":)")}});

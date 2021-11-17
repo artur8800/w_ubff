@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack --watch --env sourcemaps=$npm_config_sourcemaps --config ./bundler/webpack.dev.js",
-    "build": "webpack --config ./bundler/webpack.prod.js"
+    "build": "webpack --config ./bundler/webpack.prod.js",
+    "buildD": "wp-scripts build ./assets/src/js/blocks/awp-myfirstblock.js --output-path=custom",
+    "buildN": "wp-scripts build ./assets/src/js/blocks/ublock-container.js --output-path=gutenberg-blocks/ublock-container"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.13.1",
-    "@babel/preset-env": "^7.13.5",
     "assets-webpack-plugin": "^7.1.1",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0",
@@ -30,6 +31,10 @@
     "webpack-cli": "^4.5.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@wordpress/scripts": "19.1.0",
     "browser-sync": "^2.26.14",
     "browser-sync-webpack-plugin": "^2.3.0",
     "css-minimizer-webpack-plugin": "^1.3.0"

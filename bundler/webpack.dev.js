@@ -23,23 +23,23 @@ module.exports = (env) => {
       news_item: './assets/src/js/news_item.js',
       team_member: './assets/src/js/team_member.js',
       gallery: './assets/src/js/gallery.js',
-      myfirstblock: './assets/src/js/blocks/awp-myfirstblock.js',
+      ublock_container: './assets/src/js/blocks/ublock-container.js'
     },
     output: {
-      filename: 'js/[name].js',
-      chunkFilename: '[name]/[name].js',
+
+      filename: (pathData) => {
+        return /ublock/.test(pathData.chunk.name) ? 'js/blocks/[name]/[name].js' : 'js/[name].js';
+      },
       path: path.resolve(__dirname, '../assets/dist/'),
     },
     optimization: {
       splitChunks: {
-
         cacheGroups: {
           common: {
             name: 'common',
-            filename: 'js/[name].[chunkhash:8].js',
-            test: /[\\/]node_modules[\\/]/,
+            filename: 'js/[name]/[name].[chunkhash:8].js',
+            test: /[\\/]node_modules[\\/]|\/blocks\//,
             chunks: 'all',
-            //  minSize: 0
           },
         },
       },
@@ -61,7 +61,9 @@ module.exports = (env) => {
         sourceMap: env.sourcemaps ? true : false,
       }),
       new MiniCSSExtractPlugin({
-        filename: 'css/[name].[contenthash:8].css',
+        filename: (pathData) => {
+          return /ublock/.test(pathData.chunk.name) ? 'js/blocks/[name]/editor.css' : 'css/[name].[contenthash:8].css';
+        },
       }),
       new webpack.ProvidePlugin({
         $: 'jquery',

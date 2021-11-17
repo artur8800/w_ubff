@@ -3,6 +3,10 @@
         "plugin:@wordpress/eslint-plugin/esnext"
     ],
     "env": {
-        "browser": true
-    }
+        "browser": false
+    },
+    "ignorePatterns": [
+        "webpack.dev.js",
+        "**/*.js"
+    ]
 }

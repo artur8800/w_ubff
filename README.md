@@ -1,15 +1,6 @@
 # wp-webpack-theme
 
-#### A blank open source WordPress theme working with webpack bundler ####
 
-The goal of this WordPress theme is to create an easy-to-use, friendly and lightweight environment to combine both the structure of a WordPress theme and the power of a bundler.
-
-[![Only 2 Kb](https://badge-size.herokuapp.com/louislspn/wp-webpack-theme/master/bundler/webpack.dev.js)](https://github.com/Naereen/StrapDown.js/blob/master/bundler/webpack.dev.js)
-[![GitHub version](https://badge.fury.io/gh/louislspn%2Fwp-webpack-theme.svg)](https://github.com/louislspn/wp-webpack-theme)
-[![Maintenance](https://img.shields.io/badge/maintained-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
-[![GitHub contributors](https://img.shields.io/github/contributors/louislspn/wp-webpack-theme.svg)](https://GitHub.com/louislspn/wp-webpack-theme/graphs/contributors/)
-
-## Table of Contents
 
 1. [Introduction](#1-introduction)
 2. [Installation](#2-installation)
