@@ -7,7 +7,8 @@
     "watch": "webpack --watch --env sourcemaps=$npm_config_sourcemaps --config ./bundler/webpack.dev.js",
     "build": "webpack --config ./bundler/webpack.prod.js",
     "buildD": "wp-scripts build ./assets/src/js/blocks/awp-myfirstblock.js --output-path=custom",
-    "buildN": "wp-scripts build ./assets/src/js/blocks/ublock-container.js --output-path=gutenberg-blocks/ublock-container"
+    "buildN": "wp-scripts build ./assets/src/js/blocks/ublock-section.js --output-path=gutenberg-blocks/ublock-section",
+    "wp-scripts": "wp-scripts start ./assets/src/js/blocks/ublock-column.js --output-path=gutenberg-blocks/ublock-column"
   },
   "keywords": [],
   "author": "",

@@ -2,10 +2,10 @@ const { registerBlockType } = wp.blocks;
 const { InnerBlocks } = wp.blockEditor;
 
 
-import '../../sass/gutenberg-block-styles/ublock-container.scss';
+import '../../sass/gutenberg-block-styles/ublock-section.scss';
 
 
-registerBlockType('ublock/container', {
+registerBlockType('ublock/section', {
 
 
 
@@ -33,13 +33,6 @@ registerBlockType('ublock/container', {
     icon: 'editor-kitchensink',
 
     attributes: {
-        content: {
-            type: 'string',
-        },
-        exampleText: {
-            type: 'string',
-            default: ''
-        },
         postIds: {
             type: 'array',
             default: []

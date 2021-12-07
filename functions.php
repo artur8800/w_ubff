@@ -70,6 +70,8 @@ if ( ! function_exists( 'wp_ubff_setup' ) ) :
 
 		add_image_size( 'promo-image', 160, 140, true );
 
+		add_image_size( 'blog-image', 460, 286, true );
+
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
@@ -229,7 +231,20 @@ function smartwp_remove_wp_block_library_css(){
 } 
 add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 
+function register_crb_style() {
+	wp_register_style(
+		'crb-my-shiny-gutenberg-block-stylesheet',
+		get_stylesheet_directory_uri() . '/template-parts/carbon-fields/style.css'
+	);
+}
 
+add_action('wp_enqueue_scripts', 'register_crb_style');
+
+
+add_filter( 'max_srcset_image_width', 'max_srcset_image_width', 10 , 2 );
+function max_srcset_image_width() {
+    return 2048;
+}
 // function gutenberg_examples_01_register_block() {
  
 //     // automatically load dependencies and version
@@ -248,33 +263,111 @@ add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 // add_action( 'init', 'gutenberg_examples_01_register_block' );
 
 
-// add_action('init', function() {
-// 	wp_register_script('awp-myfirstblock-js', get_template_directory_uri() . '/custom/awp-myfirstblock.js');
- 
-// 	register_block_type('awp/firstblock', [
-// 		'editor_script' => 'awp-myfirstblock-js',
-// 	]);
-// });
+
+
+// function include_ad_before_heading($block_content, $block)
+// {
+
+//     if ($block['blockName'] === 'core/media-text') {
+// 		print_r($block_content);
+//       ///  return '<div class="my-ad"></div>' . $block_content;
+
+//     } else {
+
+//         return $block_content;
+
+//     }
+
+// }
+
+// add_filter( 'render_block', 'include_ad_before_heading', 10, 2 );
+
+
+
+// Register Custom Post Type
+function create_team_members() {
+
+	$labels = array(
+		'name'                  => _x( 'Team Members', 'Post Type General Name', 'cw-custom-post-types' ),
+		'singular_name'         => _x( 'Team Member', 'Post Type Singular Name', 'cw-custom-post-types' ),
+		'menu_name'             => __( 'Team Members', 'cw-custom-post-types' ),
+		'name_admin_bar'        => __( 'Team Members', 'cw-custom-post-types' ),
+		'archives'              => __( 'Team Member Archives', 'cw-custom-post-types' ),
+		'parent_item_colon'     => __( 'Parent Team Member:', 'cw-custom-post-types' ),
+		'all_items'             => __( 'All Team Members', 'cw-custom-post-types' ),
+		'add_new_item'          => __( 'Add New Team Member', 'cw-custom-post-types' ),
+		'add_new'               => __( 'Add New', 'cw-custom-post-types' ),
+		'new_item'              => __( 'New Team Member', 'cw-custom-post-types' ),
+		'edit_item'             => __( 'Edit Team Member', 'cw-custom-post-types' ),
+		'update_item'           => __( 'Update Team Member', 'cw-custom-post-types' ),
+		'view_item'             => __( 'View Team Member', 'cw-custom-post-types' ),
+		'search_items'          => __( 'Search Team Member', 'cw-custom-post-types' ),
+		'not_found'             => __( 'Not found', 'cw-custom-post-types' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'cw-custom-post-types' ),
+		'featured_image'        => __( 'Featured Image', 'cw-custom-post-types' ),
+		'set_featured_image'    => __( 'Set featured image', 'cw-custom-post-types' ),
+		'remove_featured_image' => __( 'Remove featured image', 'cw-custom-post-types' ),
+		'use_featured_image'    => __( 'Use as featured image', 'cw-custom-post-types' ),
+		'insert_into_item'      => __( 'Insert into Team Member', 'cw-custom-post-types' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this Team Member', 'cw-custom-post-types' ),
+		'items_list'            => __( 'Team Members list', 'cw-custom-post-types' ),
+		'items_list_navigation' => __( 'Team Members list navigation', 'cw-custom-post-types' ),
+		'filter_items_list'     => __( 'Filter Team Members list', 'cw-custom-post-types' ),
+	);
+	$args = array(
+		'label'                 => __( 'Team Member', 'cw-custom-post-types' ),
+		'description'           => __( 'Chalk and Ward Team Members', 'cw-custom-post-types' ),
+		'labels'                => $labels,
+		'supports' => array(
+			'title',
+			'editor',
+			'thumbnail',
+			'page-attributes'
+		),
+		'taxonomies'            => array( 'category' ),
+		'hierarchical'          => true,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 20,
+		'menu_icon'             => 'dashicons-groups',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,		
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'template' 				=> true,
+		'rewrite'   => array( 'slug' => 'team' ),
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'team-members', $args );
+
+}
+add_action( 'init', 'create_team_members', 0 );
 
 
 
 
 require get_template_directory() . '/template-parts/template-functions/template-functions.php';
 
-require get_template_directory() . '/template-parts/carbon-fields/banner-image-section.php';
+require get_template_directory() . '/template-parts/carbon-fields/gutenberg/banner-image-section.php';
 
-require get_template_directory() . '/template-parts/carbon-fields/latest-posts.php';
+require get_template_directory() . '/template-parts/carbon-fields/gutenberg/latest-posts.php';
 
-require get_template_directory() . '/template-parts/carbon-fields/main-page-gallery.php';
+require get_template_directory() . '/template-parts/carbon-fields/gutenberg/main-page-gallery.php';
 
-require get_template_directory() . '/template-parts/carbon-fields/partners.php';
+require get_template_directory() . '/template-parts/carbon-fields/gutenberg/partners.php';
 
-require get_template_directory() . '/template-parts/carbon-fields/inner-block.php';
+
+// require get_template_directory() . '/template-parts/carbon-fields/main-info-social.php';
+require get_template_directory() . '/template-parts/carbon-fields/gutenberg/team-member-info.php';
 
 require get_template_directory() . '/inc/custom-header.php';
 
-require  get_template_directory() . '/gutenberg-blocks/registration/ublock-container.php';
+require  get_template_directory() . '/gutenberg-blocks/registration/ublock-section.php';
 
+require  get_template_directory() . '/gutenberg-blocks/registration/ublock-media-text.php';
 /**
  * Custom template tags for this theme.
  */

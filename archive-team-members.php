@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main ARCHIVE">
+<main id="primary" class="site-main ARCHIVETEAM">
 
     <?php if ( have_posts() ) : ?>
 

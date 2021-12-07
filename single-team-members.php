@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main SINGLE">
+<main id="primary" class="site-main SINGLETEAM">
 
     <?php
 		while ( have_posts() ) :
