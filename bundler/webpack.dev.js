@@ -23,9 +23,7 @@ module.exports = (env) => {
       news_item: './assets/src/js/news_item.js',
       team_member: './assets/src/js/team_member.js',
       gallery: './assets/src/js/gallery.js',
-      ublock_section: './assets/src/js/blocks/ublock-section.js',
-      ublock_media_text: './assets/src/js/blocks/ublock-media-text.js',
-      ublock_column: './assets/src/js/blocks/ublock-column.js'
+      ublock_section: './assets/src/js/blocks/ublock-section.js'
     },
     output: {
 
@@ -129,17 +127,21 @@ module.exports = (env) => {
         {
           test: /\.(svg|png)$/,
           type: 'asset/inline',
+          // generator: {
+          //   filename: 'img/[name][ext]',
+          // },
         },
         {
           test: /\.gif$/i,
           loader: 'file-loader',
           options: {
             name: '[name].[contenthash].[ext]',
-            outputPath: 'img',
+            outputPath: './img',
+            publicPath: '../img'
           },
         },
         {
-          test: /\.jpg$/,
+          test: /\.(jpg|svg)$/,
           type: 'asset/resource',
           generator: {
             filename: 'img/[name][ext]',
