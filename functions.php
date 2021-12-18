@@ -322,7 +322,9 @@ function create_team_members() {
 			'title',
 			'editor',
 			'thumbnail',
-			'page-attributes'
+			'excerp',
+			'page-attributes',
+			'custom-fields'
 		),
 		'taxonomies'            => array( 'category' ),
 		'hierarchical'          => true,
@@ -359,7 +361,7 @@ require get_template_directory() . '/template-parts/carbon-fields/gutenberg/main
 
 require get_template_directory() . '/template-parts/carbon-fields/gutenberg/partners.php';
 
-
+require get_template_directory() . '/template-parts/carbon-fields/page-containers/team-members.php';
 // require get_template_directory() . '/template-parts/carbon-fields/main-info-social.php';
 require get_template_directory() . '/template-parts/carbon-fields/gutenberg/team-member-info.php';
 
