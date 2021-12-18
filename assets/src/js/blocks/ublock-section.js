@@ -22,9 +22,9 @@ registerBlockType('ublock/section', {
     supports: {
         align: ['wide', 'full'],
         anchor: true,
-        html: false,
+        html: true,
         customClassName: true,
-        className: true,
+        className: false,
         isertAfter: true
     },
 
@@ -43,7 +43,6 @@ registerBlockType('ublock/section', {
 
         return (
             <div>
-
                 <InnerBlocks renderAppender={InnerBlocks.ButtonBlockAppender} />
             </div>
         );
@@ -51,10 +50,10 @@ registerBlockType('ublock/section', {
 
     save: (props) => {
 
-        const { className } = props;
+        const { customClassName } = props;
 
         return (
-            <section className={className}>
+            <section className={customClassName}>
 
                 <InnerBlocks.Content />
 
